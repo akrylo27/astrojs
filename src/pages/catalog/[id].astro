@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Json from "../../components/Json.astro";
 
 const id = Astro.params.id
 
@@ -10,7 +9,7 @@ const json = await response.json()
 
 <Layout title={`detail page ${id}`}>
   <div class="container">
-    <h1>{ json.name }</h1>
+    <h1 class="title">{ json.name }</h1>
     <p>{ json.description }</p>
     <img src={`https://api.qlc-it.ru${json.img.url}`} alt={json.name}>
     <p>{ json.delivery }</p>

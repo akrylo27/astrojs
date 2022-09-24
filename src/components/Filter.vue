@@ -1,15 +1,9 @@
 <template>
   <div class="filter">
-    <pre>
-      {{ filter }}
-    </pre>
-    <select @change="addName">
-      <option value="Alex">Alex</option>
-      <option value="A;ma">Alma</option>
-    </select>
-    <select @change="addAge">
-      <option value="10">10</option>
-      <option value="12">12</option>
+    <select @change="chn" class="select">
+      <option :value="list" v-for="(list, index) in lists" :key="index">
+        {{ list }}
+      </option>
     </select>
   </div>
 </template>
@@ -17,18 +11,26 @@
 <script>
 export default {
   data: () => ({
-    filter: {
-      name: null,
-      age: null
-    }
+    lists: [4,8,20,1000]
   }),
   methods: {
-    addName(e) {
-      this.filter.name = e.target.value
-    },
-    addAge(e) {
-      this.filter.age = e.target.value
+    chn(e) {
+      this.$emit('limit', e.target.value)
     }
   }
 }
 </script>
+
+<style scoped>
+  .select {
+    width: 100px;
+    display: block;
+    appearance: none;
+    border: 1px solid rgba(0,0,0,.1);
+    box-sizing: border-box;
+    padding: 5px 10px;
+    background: none;
+    margin: 20px 0 0;
+    outline: none;
+  }
+</style>
