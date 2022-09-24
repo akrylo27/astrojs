@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const response = await fetch('https://api.qlc-it.ru/catalogs')
+  const json = await response.json()
+
+  return json.map((product: any) => ({
+    params: { id: product.id },
+    props: { product }
+  }))
+}
+
+const { id } = Astro.params
+const { product } = Astro.props
+---
+
+<Layout title={`detail page ${id}`}>
+  <div class="container">
+    <h1>{ product.name }</h1>
+    <p>{ product.description }</p>
+    <img src={`https://api.qlc-it.ru${product.img.url}`} alt={product.name}>
+    <p>{ product.delivery }</p>
+  </div>
+</Layout>

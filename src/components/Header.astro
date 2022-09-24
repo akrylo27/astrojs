@@ -1,0 +1,37 @@
+---
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header-box">
+      <div class="header-box__item">
+        <Logo title="lhab" />
+      </div>
+      <div class="header-box__item">
+        <Nav />
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 15px 20px;
+  }
+
+  .header-box {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-box__item {
+    margin-left: 30px;
+  }
+
+  .header-box__item:first-child {
+    margin-left: 0;
+  }
+</style>

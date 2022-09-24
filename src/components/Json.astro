@@ -1,0 +1,9 @@
+---
+interface Props {
+  code: any
+}
+
+const { code }  = Astro.props as Props
+---
+
+<pre>{JSON.stringify(code, null, '\t')}</pre>

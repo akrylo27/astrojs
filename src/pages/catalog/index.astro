@@ -1,0 +1,57 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Filter from '../../components/Filter.vue';
+
+const response = await fetch('https://api.qlc-it.ru/catalogs')
+const json = await response.json()
+
+interface jsn {
+  id: string,
+  name: string,
+  description: string,
+  price: string,
+  vendorCode: string,
+  count: number | null,
+  brend: unknown,
+  delivery: string,
+  img: any
+}
+---
+
+<Layout title="Catalog pages">
+  <div class="container">
+    <Filter client:visible />
+
+    <div class="catalog">
+      {
+        json.map(({ id, name, description, img }: jsn) => (
+          <div class="catalog__item">
+            <h2>{ name }</h2>
+            <p>{ description }</p>
+            <img src={`https://api.qlc-it.ru${img.url}`} alt={name} width="200">
+            <p>
+              <a href={`/catalog/${id}`}>detail...</a>
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .catalog__item {
+    width: 49%;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,.1);
+    margin: 10px 0;
+  }
+</style>

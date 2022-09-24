@@ -1,0 +1,12 @@
+body {
+  background: #f8fafc;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 1170px;
+  padding: 0 20px;
+  margin: auto
+}

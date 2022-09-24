@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props as Props
+---
+
+<a href="/" class="logo">{ title }</a>
+
+<style>
+  .logo {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,.7);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 1;
+  }
+</style>
